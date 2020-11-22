@@ -189,6 +189,7 @@ namespace Ait.ADManagement.Wpf
                     return;
                 }
             }
+
             isRefreshRequired = true;
 
             foreach (User user in usersInActiveGroup)
