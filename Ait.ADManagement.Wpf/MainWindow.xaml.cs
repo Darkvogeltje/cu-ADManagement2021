@@ -31,7 +31,7 @@ namespace Ait.ADManagement.Wpf
             BuildTreeView();
             grpGroup.Margin = grpUser.Margin;
             lblOUPath.Content = "";
-            //List<Group> groups = ADService.GetAllGroups();  LDAP://OU=OUGroepen,DC=aitg1,DC=local
+            //List<Group> groups = ADService.GetAllGroups();  LDAP://OU=OUGroepen,DC=ait,DC=local
             grpGroup.Visibility = Visibility.Hidden;
             grpUser.Visibility = Visibility.Hidden;
         }

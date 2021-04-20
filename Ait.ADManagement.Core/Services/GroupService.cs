@@ -11,7 +11,7 @@ namespace Ait.ADManagement.Core.Services
     {
         public static List<Group> GetGroupMemberShip(GroupPrincipal groupPrincipal)
         {
-            string[] paths =  { "LDAP://OU=OUGroepen,DC=aitg1,DC=local" };
+            string[] paths = { AD.LDAPShort + "OU=OUGroepen" + AD.LDAPSuffix };
             List<Group> allGroups = ADService.GetAllGroups(paths);
             List <Group> groups = new List<Group>();
             foreach(Group group in allGroups)
@@ -94,35 +94,6 @@ namespace Ait.ADManagement.Core.Services
                 throw new Exception(error.Message);
             }
         }
-        //public static bool UpdateGroup(Group group, OU targetOU, string groupName)
-        //{
-        //    try
-        //    {
-        //        // dit kan wel ???
-        //        group.GroupPrincipal.SamAccountName = groupName;
-        //        group.GroupPrincipal.Save();
-
-        //        // Name prop is readonly bij een bestaande groep, dus onderstaande werkt niet ?????
-        //        // group.GroupPrincipal.Name = groupName;
-        //        // dit werkt wel : 
-        //        // ===========================================================
-        //        DirectoryEntry directoryEntry = new DirectoryEntry(AD.LDAPShort + group.GroupPrincipal.DistinguishedName);
-        //        directoryEntry.Rename("CN=" + groupName);
-        //        // ===========================================================
-
-        //        //group.SamAccountName = groupName;
-        //        group = new Group(groupName);
-        //    }
-        //    catch (Exception fout)
-        //    {
-        //        return false;
-        //    }
-        //    if (targetOU.Path != group.DirectoryEntry.Path)
-        //    {
-        //        OUService.MovePrincipal(group, targetOU);
-        //    }
-        //    return true;
-        //}
 
         public static Group UpdateGroup(Group group, OU targetOU, string groupName)
         {
@@ -135,13 +106,13 @@ namespace Ait.ADManagement.Core.Services
 
                 // Name prop is readonly bij een bestaande groep, dus onderstaande werkt niet ?????
                 // group.GroupPrincipal.Name = groupName;
-                // dit werkt wel (hierdoor wordt op AD blijkbaar wel een nieuwe group-object gemaakt, dus ik vermoed wissen en nieuw maken): 
+                //
+                // Wat dan wel werkt : (hierdoor wordt op AD blijkbaar wel een nieuwe group-object gemaakt, dus ik vermoed wissen en nieuw maken): 
                 // ===========================================================
                 DirectoryEntry directoryEntry = new DirectoryEntry(AD.LDAPShort + group.GroupPrincipal.DistinguishedName);
                 directoryEntry.Rename("CN=" + groupName);
                 // ===========================================================
 
-                //group.SamAccountName = groupName;
                 retourGroup = new Group(groupName);
             }
             catch (Exception error)

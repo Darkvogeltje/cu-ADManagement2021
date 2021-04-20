@@ -58,7 +58,7 @@ namespace Ait.ADManagement.Core.Services
         {
             // onderstaande zou moeten werken (= gebruiker meteen in correcte OU plaatsen) maar werkt niet
             //PrincipalContext principalContext = new PrincipalContext(ContextType.Domain, AD.ADDomainNameShort, targetOU.Path);
-            // dan maar nieuwe gebruiker in de OU in de "CN=Users,DC=aitg1,DC=local" plaatsen en achteraf verplaatsen naar targetOU
+            // dan maar nieuwe gebruiker in de OU in de "CN=Users,DC=ait,DC=local" plaatsen en achteraf verplaatsen naar targetOU
             PrincipalContext principalContext = new PrincipalContext(ContextType.Domain);  
             UserPrincipal userPrincipal = new UserPrincipal(principalContext);
             userPrincipal.GivenName = firstname;

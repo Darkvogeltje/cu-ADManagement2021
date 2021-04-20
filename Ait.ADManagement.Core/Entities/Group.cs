@@ -12,7 +12,7 @@ namespace Ait.ADManagement.Core.Entities
     {
         public string SamAccountName { get; set; }
         public GroupPrincipal GroupPrincipal { get; set; } // het Group object op de AD
-        public DirectoryEntry DirectoryEntry { get; set; }  // de OU waar user lid van is
+        public DirectoryEntry DirectoryEntry { get; set; }  // de OU waar group lid van is
 
 
         public Group()

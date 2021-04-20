@@ -34,7 +34,6 @@ namespace Ait.ADManagement.Core.Services
             };
             foreach (SearchResult searchResult in directorySearcher.FindAll())
             {
-                PrincipalContext principalContext = new PrincipalContext(ContextType.Domain);
                 users.Add(new User(searchResult.Properties["sAMAccountName"][0].ToString()));
             }
             return users;
@@ -50,7 +49,6 @@ namespace Ait.ADManagement.Core.Services
             };
             foreach (SearchResult searchResult in directorySearcher.FindAll())
             {
-                PrincipalContext principalContext = new PrincipalContext(ContextType.Domain);
                 groups.Add(new Group(searchResult.Properties["sAMAccountName"][0].ToString()));
             }
             return groups;

@@ -11,9 +11,10 @@ namespace Ait.ADManagement.Core.Entities
     {
         public static string LDAPLong = "LDAP://127.0.0.1:389";
         public static string LDAPShort = "LDAP://";
-        public static string ADDomainEmail = "@aitg1.local";
-        public static string ADDomainNameShort = "aitg1";
-        public static string ADDomainNameLong = "aitg1.local";
+        public static string LDAPSuffix = ",DC=ait,DC=local";
+        public static string ADDomainEmail = "@ait.local";
+        public static string ADDomainNameShort = "ait";
+        public static string ADDomainNameLong = "ait.local";
 
 
     }
